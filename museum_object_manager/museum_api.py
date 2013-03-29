@@ -7,7 +7,7 @@ import json
 def museum_query(rest_qry, extrapath='search'):
     '''
     Abstract base function: pass in the specific 'rest query' to make queries.
-    API returns json, converted to a python dict
+    API returns javascript/json, converted to a python dict
     '''
     url = '%s/%s' % (settings.MUSEUM_API_URL,extrapath)
     response = requests.get(
@@ -44,7 +44,8 @@ def full_record_details(id):
     people, places, categories, styles and periods, materials and techniques.
     In short, everything we know about the object usefully split up into separate fields.
     '''
+    path = 'O%s' % id
 
-    data = museum_query(rest_qry = {'q':id})
-    return [{'pk':17079}]
+    data = museum_query(rest_qry = {},extrapath=path)
+    return data[0]
 

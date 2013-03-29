@@ -22,4 +22,6 @@ class SimpleTest(TestCase):
 
     def test_full_record_details(self):
         data = full_record_details('12345')
-        self.assertEquals(data[0]['pk'],17079)
+        self.assertEquals(data['pk'],17079)
+        self.assertEquals(data['fields']['artist'],'Rogers, William, Harry')
+
