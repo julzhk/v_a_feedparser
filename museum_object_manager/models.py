@@ -4,6 +4,20 @@ from django.conf import settings
 from museum_object_manager.museum_api import full_record_details
 import json
 
+IMAGE_SIZES = (
+    ('70px square crop','thumb'),
+    ('130px square crop','small'),
+    ('177px square crop','medium'),
+    ('265px square crop','medium'),
+    ('355px square fit','large'),
+    ('768x600px best fit','bestfit'),
+    ('768px (max) longest axis','max')
+)
+class RecordImage(models.Model):
+    Record = models.ForeignKey('MuseumRecord')
+    src = models.ImageField(upload_to='records')
+    img_size = models.CharField(max_length=20,choices=IMAGE_SIZES)
+
 class MuseumRecord(models.Model):
     api_id = models.IntegerField(null=True)
     raw_data = models.TextField(blank=True)
