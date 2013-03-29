@@ -4,13 +4,14 @@ from django.http import HttpRequest, HttpResponse
 from django.conf import settings
 import json
 
-def museum_query(rest_qry):
+def museum_query(rest_qry, extrapath='search'):
     '''
     Abstract base function: pass in the specific 'rest query' to make queries.
     API returns json, converted to a python dict
     '''
+    url = '%s/%s' % (settings.MUSEUM_API_URL,extrapath)
     response = requests.get(
-        settings.MUSEUM_API_URL,
+        url,
         params = rest_qry,
         headers = {
             'Accept':'application/json'
@@ -43,3 +44,7 @@ def full_record_details(id):
     people, places, categories, styles and periods, materials and techniques.
     In short, everything we know about the object usefully split up into separate fields.
     '''
+
+    data = museum_query(rest_qry = {'q':id})
+    return [{'pk':17079}]
+
