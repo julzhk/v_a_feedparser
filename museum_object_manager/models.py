@@ -17,3 +17,10 @@ class MuseumRecord(models.Model):
     @property
     def get_api_data(self):
         return json.loads(self.raw_data)
+
+    @property
+    def get_primary_image_id(self):
+        '''
+        convenience method to just pull out the primary_image_id
+        '''
+

@@ -28,7 +28,6 @@ class SimpleTest(TestCase):
 
 
 class Test_create_museum_object(TestCase):
-
     def test_create_object(self):
         testobject = MuseumRecord()
         testobject.api_id = 12345
@@ -36,3 +35,10 @@ class Test_create_museum_object(TestCase):
         data = testobject.get_api_data
         self.assertEquals(data['fields']['artist'],'Rogers, William, Harry')
 
+class Test_create_museum_object_that_has_img(TestCase):
+    def test_create_object(self):
+        testobject = MuseumRecord()
+        testobject.api_id = 100554
+        testobject.save()
+        img_ref = testobject.get_primary_image_id
+        self.assertEquals(img_ref, "2006AG6013")
