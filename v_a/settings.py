@@ -58,7 +58,7 @@ USE_TZ = True
 
 # Absolute filesystem path to the directory that will hold user-uploaded files.
 # Example: "/var/www/example.com/media/"
-MEDIA_ROOT = ''
+MEDIA_ROOT = SITE_ROOT + '/media'
 
 # URL that handles the media served from MEDIA_ROOT. Make sure to use a
 # trailing slash.
@@ -69,7 +69,7 @@ MEDIA_URL = ''
 # Don't put anything in this directory yourself; store your static files
 # in apps' "static/" subdirectories and in STATICFILES_DIRS.
 # Example: "/var/www/example.com/static/"
-STATIC_ROOT = ''
+STATIC_ROOT = os.path.dirname(SITE_ROOT) + '/static'
 
 # URL prefix for static files.
 # Example: "http://example.com/static/", "http://static.example.com/"
@@ -118,6 +118,17 @@ WSGI_APPLICATION = 'v_a.wsgi.application'
 import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
+TEMPLATE_CONTEXT_PROCESSORS = (
+    "django.contrib.auth.context_processors.auth",
+    "django.core.context_processors.request",
+    "django.core.context_processors.debug",
+    "django.core.context_processors.i18n",
+    "django.core.context_processors.media",
+    "django.core.context_processors.static",
+    "django.core.context_processors.tz",
+    "django.contrib.messages.context_processors.messages",
+)
+
 INSTALLED_APPS = (
     'debug_toolbar',
     'django.contrib.auth',
@@ -134,7 +145,7 @@ INSTALLED_APPS = (
     'bootstrap_toolkit',
     'museum_object_manager',
 )
-
+GRAPPELLI_INDEX_DASHBOARD = 'v_a.dashboard.CustomIndexDashboard'
 MUSEUM_API_URL = 'http://www.vam.ac.uk/api/json/museumobject'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
