@@ -1,7 +1,5 @@
 import requests
 from django.conf import settings
-from django.http import HttpRequest, HttpResponse
-from django.conf import settings
 import json
 
 def museum_query(rest_qry, extrapath='search',return_json=False):

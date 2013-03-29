@@ -147,6 +147,7 @@ INSTALLED_APPS = (
 )
 GRAPPELLI_INDEX_DASHBOARD = 'v_a.dashboard.CustomIndexDashboard'
 MUSEUM_API_URL = 'http://www.vam.ac.uk/api/json/museumobject'
+MUSEUM_IMAGE_ROOT = 'http://media.vam.ac.uk/media/thira/collection_images/%s/%s.jpg'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.

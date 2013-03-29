@@ -42,3 +42,15 @@ class Test_create_museum_object_that_has_img(TestCase):
         testobject.save()
         img_ref = testobject.get_primary_image_id
         self.assertEquals(img_ref, "2006AG6013")
+
+class Test_get_img_url(TestCase):
+    def test_create_object(self):
+        testobject = MuseumRecord()
+        testobject.api_id = 100554
+        testobject.save()
+        img_ref = testobject.get_primary_image_id
+        self.assertEquals(
+            testobject.get_primary_image,
+            "http://media.vam.ac.uk/media/thira/collection_images/2006AG/2006AG6013.jpg"
+        )
+
