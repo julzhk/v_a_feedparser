@@ -23,4 +23,5 @@ class MuseumRecord(models.Model):
         '''
         convenience method to just pull out the primary_image_id
         '''
+        return self.get_api_data['fields']['primary_image_id']
 
