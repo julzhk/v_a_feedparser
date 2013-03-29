@@ -4,7 +4,7 @@ from django.http import HttpRequest, HttpResponse
 from django.conf import settings
 import json
 
-def museum_query(rest_qry, extrapath='search'):
+def museum_query(rest_qry, extrapath='search',return_json=False):
     '''
     Abstract base function: pass in the specific 'rest query' to make queries.
     API returns javascript/json, converted to a python dict
