@@ -1,5 +1,8 @@
 import requests
 from django.conf import settings
+from django.http import HttpRequest, HttpResponse
+from django.conf import settings
+import json
 
 def museum_query(rest_qry):
     '''
@@ -24,4 +27,6 @@ def keywordsearch(term =''):
     http://www.vam.ac.uk/api/json/museumobject/search?q=wooden+door
     '''
     data = museum_query(rest_qry = {'q':term})
-    return data
+    meta = data['meta']
+    records = data['records']
+    return records

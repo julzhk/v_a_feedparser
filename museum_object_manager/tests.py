@@ -17,5 +17,5 @@ class SimpleTest(TestCase):
 
     def test_museum_api(self):
         data = keywordsearch(term='wooden_door')
-        self.assertTrue('records' in data)
+        self.assertTrue(isinstance(data, list))
 
