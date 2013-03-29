@@ -30,3 +30,16 @@ def keywordsearch(term =''):
     meta = data['meta']
     records = data['records']
     return records
+
+def full_record_details(id):
+    '''
+    Full record details
+    append the object_number from the fields section
+    eg:
+    http://www.vam.ac.uk/api/json/museumobject/O12345
+    Yes - that's an 'O' for Oscar.
+
+    With a museum object, you'll see all the associated
+    people, places, categories, styles and periods, materials and techniques.
+    In short, everything we know about the object usefully split up into separate fields.
+    '''
