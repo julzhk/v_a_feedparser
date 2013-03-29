@@ -119,15 +119,22 @@ import os
 TEMPLATE_DIRS = (os.path.join(os.path.dirname(__file__), '..', 'templates').replace('\\','/'),)
 
 INSTALLED_APPS = (
+    'debug_toolbar',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    'grappelli.dashboard',
+    'grappelli',
     'django.contrib.admin',
+    'south',
+    'bootstrap_toolkit',
     'museum_object_manager',
 )
+
 
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
