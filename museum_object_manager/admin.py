@@ -1,6 +1,7 @@
 from django.contrib import admin
-from museum_object_manager.models import MuseumRecord
+from museum_object_manager.models import MuseumRecord,RecordImage
 from django.utils.safestring import mark_safe
+from django.contrib.admin.widgets import AdminFileWidget
 
 class MuseumRecordAdmin(admin.ModelAdmin):
     exclude = ('raw_data',)
@@ -12,3 +13,4 @@ class MuseumRecordAdmin(admin.ModelAdmin):
     img_preview.allow_tags = True
 
 admin.site.register(MuseumRecord,MuseumRecordAdmin)
+admin.site.register(RecordImage)

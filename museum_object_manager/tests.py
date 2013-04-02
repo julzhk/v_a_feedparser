@@ -7,7 +7,7 @@ Replace this with more appropriate tests for your application.
 
 from django.test import TestCase
 from museum_api import keywordsearch, full_record_details
-from models import MuseumRecord
+from models import MuseumRecord, RecordImage
 
 class SimpleTest(TestCase):
     def test_basic_addition(self):
@@ -53,4 +53,15 @@ class Test_get_img_url(TestCase):
             testobject.get_primary_image,
             "http://media.vam.ac.uk/media/thira/collection_images/2006AG/2006AG6013.jpg"
         )
+
+
+class Test_create_image_records(TestCase):
+    def test_create_img_objects(self):
+        testobject = MuseumRecord()
+        testobject.api_id = 100554
+        testobject.save()
+        imgs = RecordImage.objects.filter(Record = testobject)
+        self.assertEquals(len(imgs), 7)
+
+
 

@@ -80,6 +80,7 @@ STATICFILES_DIRS = (
     # Put strings here, like "/home/html/static" or "C:/www/django/static".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    'museum_object_manager/static',
 )
 
 # List of finder classes that know how to find static files in
@@ -147,7 +148,7 @@ INSTALLED_APPS = (
 )
 GRAPPELLI_INDEX_DASHBOARD = 'v_a.dashboard.CustomIndexDashboard'
 MUSEUM_API_URL = 'http://www.vam.ac.uk/api/json/museumobject'
-MUSEUM_IMAGE_ROOT = 'http://media.vam.ac.uk/media/thira/collection_images/%s/%s_jpg_o.jpg'
+MUSEUM_IMAGE_ROOT = 'http://media.vam.ac.uk/media/thira/collection_images/%s/%s%s.jpg'
 # A sample logging configuration. The only tangible logging
 # performed by this configuration is to send an email to
 # the site admins on every HTTP 500 error when DEBUG=False.
