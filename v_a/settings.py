@@ -178,6 +178,14 @@ LOGGING = {
     }
 }
 
+CACHES = {
+    'default': {
+        'BACKEND': 'django.core.cache.backends.filebased.FileBasedCache',
+        'LOCATION': SITE_ROOT + '/django_cache',
+    }
+}
+CACHE_TIMEOUT = 300  # seconds
+
 ENVS = ('local', 'dev', 'staging', 'test', 'live')
 curr_module = sys.modules[__name__]
 

@@ -1,12 +1,23 @@
 import requests
 from django.conf import settings
 import json
+import hashlib
+from django.core.cache import cache, get_cache
 
 def museum_query(rest_qry, extrapath='search',return_json=False):
     '''
     Abstract base function: pass in the specific 'rest query' to make queries.
     API returns javascript/json, converted to a python dict
     '''
+    hash_key = '%s-%s' %(rest_qry,extrapath)
+    hash_qry = hashlib.sha1(hash_key).hexdigest()
+    trycache = cache.get(hash_qry)
+    if trycache:
+        # print 'cache hit',
+        # print rest_qry,' ',
+        # print str(trycache)[:50]
+        return trycache
+
     url = '%s/%s' % (settings.MUSEUM_API_URL,extrapath)
     response = requests.get(
         url,
@@ -16,6 +27,7 @@ def museum_query(rest_qry, extrapath='search',return_json=False):
         })
     assert response.status_code == 200
     response_dict =response.json()
+    cache.set(hash_key, response_dict, settings.CACHE_TIMEOUT)
     return response_dict
 
 def keywordsearch(term =''):
